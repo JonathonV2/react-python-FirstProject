@@ -15,10 +15,11 @@ def get_projects():
 def create_project():
     try:
         data = request.json
-        required_fields = ["name", "role", "description", "gender"]
+        required_fields = ["name","role","description","gender"]
         for field in required_fields:
-            if field not in data:
-                return jsonify({"Error": f'Missing required field: {field}'})
+            if field not in data or not data.get(field):
+                return jsonify({"error":f'Missing required field: {field}'}), 400
+            
         name = data.get("name")
         role = data.get("role")
         description = data.get("description")
@@ -27,8 +28,8 @@ def create_project():
         #Fetch Image
         if gender == "male":
             img_url = f"https://avatar.iran.liara.run/public/boy?username={name}"
-        elif gender == "Female":
-            img_url = f"https://avatar.iran.liara.run/public/girl?username={name}"
+        elif gender == "female":
+            img_url = f"https://avatar.iran.liara.run/public/boy?username={name}"
         else:
             img_url= None
             
@@ -36,7 +37,7 @@ def create_project():
         
         db.session.add(new_project)
         db.session.commit()
-        return jsonify({"msg":"Project creatred successfully"}),201
+        return jsonify(new_project.to_json()),201
     except Exception as e:
         db.session.rollback()
         return jsonify({"Error":str(e)}), 500
