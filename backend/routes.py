@@ -44,7 +44,7 @@ def create_project():
     
     #Delete User
 @app.route("/api/project/<int:id>", methods = ["DELETE"])
-def delete_friend(id):
+def delete_project(id):
     try:
         project = Projects.query.get(id)
         if project is None:
