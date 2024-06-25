@@ -14,7 +14,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
-frontend_folder = os.path.join(os.getcwd(),"..","frontend")
+frontend_folder = os.path.join(os.getcwd(),"..","Frontend")
 dist_folder = os.path.join(frontend_folder,"dist")
 
 # Server static files from the "dist" folder under the "frontend" directory
