@@ -17,7 +17,7 @@ function EditModal({ setUsers, user }) {
 		e.preventDefault();
 		setIsLoading(true);
 		try {
-			const res = await fetch(BASE_URL + "/friends/" + user.id, {
+			const res = await fetch(BASE_URL + "/project/" + user.id, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
