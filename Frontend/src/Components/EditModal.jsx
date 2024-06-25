@@ -92,12 +92,6 @@ function EditModal({ setUsers, user }) {
                             onChange={(e) => setInputs((prev) => ({ ...prev, description: e.target.value }))}
                         />
                     </FormControl>
-                    <RadioGroup defaultValue='In-Progress' mt={4}>
-                        <Flex gap={5}>
-                            <Radio value='In-Progress'>In-Progres</Radio>
-                            <Radio value='Completed'>Completed</Radio>
-                        </Flex>
-                    </RadioGroup>
                 </ModalBody>
                 <ModalFooter>
                     <Button colorScheme='blue'  mr={3}
